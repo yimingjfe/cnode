@@ -1,18 +1,19 @@
 <template>
 	<div class="g-page">
 		<div class="m-nav">
-			<a href="javascript:;" class="itm z-active">全部</a>
+<!-- 			<a href="javascript:;" class="itm z-active">全部</a>
 			<a href="javascript:;" class="itm">精华</a>
 			<a href="javascript:;" class="itm">分享</a>
 			<a href="javascript:;" class="itm">问答</a>
-			<a href="javascript:;" class="itm">招聘</a>
-<!-- 			<router-link to="" class="itm z-active">全部</router-link>
-			<router-link to="" class="itm">精华</router-link>
-			<router-link to="" class="itm">分享</router-link>
-			<router-link to="" class="itm">问答</router-link>
-			<router-link to="" class="itm">招聘</router-link> -->
+			<a href="javascript:;" class="itm">招聘</a> -->
+			<router-link to="/all" class="itm" active-class="z-active">全部</router-link>
+			<router-link to="/good" class="itm" active-class="z-active">精华</router-link>
+			<router-link to="/share" class="itm" active-class="z-active">分享</router-link>
+			<router-link to="/ask" class="itm" active-class="z-active">问答</router-link>
+			<router-link to="/job" class="itm" active-class="z-active">招聘</router-link>
 		</div>
-		<topic-list></topic-list>
+		<!-- <topic-list></topic-list> -->
+		<router-view></router-view>	
 	</div>
 </template>
 
@@ -63,7 +64,6 @@ body{
 	list-style:none;
 	.topic-itm{
 		position: relative;
-		height:138px;
 		margin-bottom:15px;
 		border: 1px solid $borderColorGray;
 		border-width: 1px 0; 
@@ -71,7 +71,7 @@ body{
 		cursor: pointer;
 		.topic-info{
 			display: table;
-			margin: 13px 0;
+			margin-top: 10px;
 			padding-left: 15px;
 			.avatar, .info{
 				display: table-cell;
@@ -107,9 +107,10 @@ body{
 			}
 		}
 		.topic-tit{
-			margin: 13px 15px 0 15px;
-			padding-bottom: 15px;
+			margin-left: 15px;
+			padding: 10px 0;
 			font-size: 16px;
+			line-height: 24px;
 			color: #222;
 			font-weight: 800;
 			border-bottom: 1px solid $borderColorGray

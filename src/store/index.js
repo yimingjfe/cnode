@@ -4,10 +4,7 @@ import * as api from '../api'
 import util from '../util'
 
 
-
 Vue.use(Vuex);
-
-
 
 const state = {
 	topicList:[]
@@ -23,10 +20,6 @@ const actions = {
 				item.lastReplyTime = util.formatDuration(item.last_reply_at);			
 			})
 			commit('SET_TOPIC_LIST', data);
-			// setTimeout(() => {
-			// 	data.splice(1, 1);
-			// 	commit('SET_TOPIC_LIST', data);
-			// }, 5000)
 		}
 	}
 }

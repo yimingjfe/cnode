@@ -3,8 +3,10 @@
 
 	export function createListView(type){
 		return {
-			type: `${type}-topic-list`,
-			render: h(topicList, {props: {type}})
+			name: `${type}-topic-list`,
+			render(h){
+				return h(topicList, {props: {type}})
+			}
 		}
 	}
 </script>
