@@ -1,28 +1,32 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as api from '../api'
-import moment from 'moment'
+import util from '../util'
+
+
 
 Vue.use(Vuex);
 
-let state = {
 
+
+const state = {
+	topicList:[]
 }
 
 const actions = {
 	async FETCH_TOPIC_LIST({ commit }, {page, limit, tab}){
 		let res  = await api.getTopics(page, limit, tab);
 		if(res.status == 200){
-			let data = res.data.data;
-			moment.locale('zh-cn');
-			console.log(moment.locale());
-			console.log(moment(data[0].create_at, 'YYYY年MM月DD天').fromNow());
+			let data = res.data.data;		
 			data.forEach( item => {
-				// item.createTime = new Date(item.create_at);
-				
-
+				item.createTime = util.formatDuration(item.create_at);
+				item.lastReplyTime = util.formatDuration(item.last_reply_at);			
 			})
 			commit('SET_TOPIC_LIST', data);
+			// setTimeout(() => {
+			// 	data.splice(1, 1);
+			// 	commit('SET_TOPIC_LIST', data);
+			// }, 5000)
 		}
 	}
 }
@@ -34,12 +38,11 @@ const mutations = {
 }
 
 const getters = {
-
+	topicList: state => state.topicList
 }
 
 export default new Vuex.Store({
 	state,
-	getters,
 	mutations,
 	actions
 })

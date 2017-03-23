@@ -68,6 +68,7 @@ body{
 		border: 1px solid $borderColorGray;
 		border-width: 1px 0; 
 		background-color: #fff;
+		cursor: pointer;
 		.topic-info{
 			display: table;
 			margin: 13px 0;
@@ -82,6 +83,7 @@ body{
 				height: 32px;
 				margin-right: 5px;
 				border-radius: 50%;
+				overflow: hidden;
 				border: 1px solid #eee;
 			}
 			.info{
