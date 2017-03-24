@@ -9,13 +9,15 @@
 import 'babel-polyfill'
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 import TopicItem from './topicItem.vue'
+import _ from 'lodash'
 
 export default{
 	props: ['type'],
 	data(){
 		return{
 			page: 1,
-			limit: 10
+			limit: 10,
+			height: 0
 		}
 	},
 
@@ -31,6 +33,14 @@ export default{
 		});
 	},
 
+	// beforeRouteEnter(to, from, next){
+	// 	this.FETCH_TOPIC_LIST({
+	// 		page: this.page,
+	// 		limit: this.limit,
+	// 		tab: this.type
+	// 	});		
+	// },
+
 	computed:{
 		topicList(){
 			return this.$store.state.topicList.map(item => {
@@ -39,10 +49,31 @@ export default{
 			})
 		}
 	},
+
+	mounted(){
+		this.$el.addEventListener('scroll', _.debounce(this.scrollHandler, 200))
+	},
+
+	updated(){
+		this.$el.scrollBottom = this.$el.ScrollHeight - this.height;
+	},
+
 	methods:{
 		...mapActions([
 			'FETCH_TOPIC_LIST'
 			]),
+
+		scrollHandler(){
+			let height = this.height = this.$el.scrollHeight;
+			if(this.$el.offsetHeight + this.$el.scrollTop > height - 100){
+				this.FETCH_TOPIC_LIST({
+					page: ++this.page,
+					limit: this.limit,
+					tab: this.type				
+				})
+			}
+		},
+
 		getTabString(string){
 			switch(string){
 				case 'ask':

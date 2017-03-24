@@ -17,8 +17,8 @@
 			<span class="time">{{topic.lastReplyTime}}</span>
 		</div>
 		<div class="topic-sign">
-			<span class="sign" v-if="topic.top"><i class="iconfont icon-jinghua"></i></span>
-			<span class="sign" v-if="topic.good"><i class="iconfont icon-zhiding"></i></span>
+			<span class="sign" v-if="topic.good"><i class="iconfont icon-jinghua"></i></span>
+			<span class="sign" v-if="topic.top"><i class="iconfont icon-zhiding"></i></span>
 		</div>
 	</li>	
 </template>
