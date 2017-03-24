@@ -31,6 +31,14 @@ export default{
 		});
 	},
 
+	// beforeRouteEnter(to, from, next){
+	// 	this.FETCH_TOPIC_LIST({
+	// 		page: this.page,
+	// 		limit: this.limit,
+	// 		tab: this.type
+	// 	});		
+	// },
+
 	computed:{
 		topicList(){
 			return this.$store.state.topicList.map(item => {

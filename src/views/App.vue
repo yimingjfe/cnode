@@ -7,7 +7,9 @@
 			<router-link to="ask" class="itm" active-class="z-active">问答</router-link>
 			<router-link to="job" class="itm" active-class="z-active">招聘</router-link>
 		</div>
-		<router-view></router-view>
+		<transition :name="transition" mode="out-in">
+			<router-view></router-view>
+		</transition>
 		<div class="m-nav-bottom">
 			<a href="javascript:;" class="itm z-active"><i class="iconfont icon-shouye"></i><span class="des">首页</span></a>
 			<a href="javascript:;" class="itm"><i class="iconfont icon-fabiao"></i><span class="des">发表</span></a>
@@ -24,11 +26,37 @@
 		components: {
 			'topic-list': topicList
 		},
+
+		data(){
+			return {
+				transition: 'fade',
+				routers:{
+					'all' : 1,
+					'good' : 2,
+					'share' : 3,
+					'ask' : 4,
+					'job' : 5
+				}
+			}
+		},
+
+		watch:{
+			'$route' (to, from){
+				let toPath = to.path.slice(1),
+						fromPath = from.path.slice(1);
+				this.transition = this.routers[toPath] < this.routers[fromPath]
+													? 'slider-right'
+													: 'slider-left';
+				console.log(this.transition);
+			}
+		}
+		
 	}
 </script>
 
 <style lang="scss">
 $borderColorGray: #e1e1e1;
+
 
 html{
 	font-size: calc(100vw / 3.75);
@@ -37,6 +65,38 @@ body{
 	font-size: 10%;
 }
 
+.fade-enter-active, .fade-leave-active{
+	transition: all .5s ease;
+}
+.fade-leave-active, .fade-enter{
+	opacity: 0;
+}
+.slider-left-leave-active,.slider-right-leave-active{
+	transition: all 2s ease;
+}
+.slider-left-enter{
+	opacity: 0;
+	transform: translateX(100%);	
+}
+.slider-left-enter-active{
+	opacity: 1;
+	transform: translateX(0);	
+}
+.slider-left-leave-active{
+	opacity: 0;
+	transform: translateX(-100%);
+}
+.slider-right-enter{
+	opacity: 0;
+	transform: translateX(-100%);
+}
+.slider-right-enter-active{
+	opacity: 1;
+}
+.slider-right-leave-active{
+	opacity: 0;
+	transform: translateX(100%);
+}
 .g-page{
 	position: relative;
 	overflow: hidden;
