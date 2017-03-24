@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 258132 */
-  src: url('//at.alicdn.com/t/font_ksvkzkhqj65stt9.eot');
-  src: url('//at.alicdn.com/t/font_ksvkzkhqj65stt9.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_ksvkzkhqj65stt9.woff') format('woff'),
-  url('//at.alicdn.com/t/font_ksvkzkhqj65stt9.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_ksvkzkhqj65stt9.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_t6n5vuzkzh93sor.eot');
+  src: url('//at.alicdn.com/t/font_t6n5vuzkzh93sor.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_t6n5vuzkzh93sor.woff') format('woff'),
+  url('//at.alicdn.com/t/font_t6n5vuzkzh93sor.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_t6n5vuzkzh93sor.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -15,9 +15,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-wode:before { content: "\e66d"; }
+
 .icon-pinglun:before { content: "\e638"; }
 
+.icon-xiaoxi:before { content: "\e64c"; }
+
 .icon-yanjing:before { content: "\e6ce"; }
+
+.icon-fabiao:before { content: "\e60a"; }
+
+.icon-shouye:before { content: "\e653"; }
 
 .icon-zhiding:before { content: "\e604"; }
 

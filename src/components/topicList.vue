@@ -13,6 +13,24 @@ export default{
 	components:{
 		'topic-item': TopicItem
 	},
+
+	props: ['type'],
+
+	data(){
+		return{
+			page: 1,
+			limit: 10
+		}
+	},
+
+	created(){
+		this.FETCH_TOPIC_LIST({
+			page: this.page,
+			limit: this.limit,
+			tab: this.type
+		});
+	},
+
 	computed:{
 		topicList(){
 			return this.$store.state.topicList.map(item => {
@@ -21,7 +39,12 @@ export default{
 			})
 		}
 	},
+
 	methods:{
+		...mapActions([
+			'FETCH_TOPIC_LIST'
+			]),
+
 		getShareString(string){
 			switch(string){
 				case 'ask':
