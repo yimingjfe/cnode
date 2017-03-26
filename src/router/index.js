@@ -1,25 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import {createListView} from '../views/createListView.vue'
+import homepage from '../views/homepage.vue' 
+import Login from '../components/Login.vue'
+import Mine from '../components/Mine.vue'
 
 Vue.use(Router)
 
+
 const routes = [
-	{path: '/', redirect:'/top'},
-	{path: '/all', component: createListView('all')},
-	{path: '/good', component: createListView('good')},
-	{path: '/share', component: createListView('share')},
-	{path: '/ask', component: createListView('ask')},
-	{path: '/job', component: createListView('job')}
-	
-]
+	{path: '/', redirect:'/homepage'},
+	{path: '/homepage', component: homepage, 
+		children: [
+			{path: '', redirect:'all'},
+			{path: 'all', component: createListView('all')},
+			{path: 'good', component: createListView('good')},
+			{path: 'share', component: createListView('share')},
+			{path: 'ask', component: createListView('ask')},
+			{path: 'job', component: createListView('job')}			
+		]},
+	{path: '/mine', component: Mine, meta:{requiresAuth: true}},
+  {path: '/login', component: Login}
+];
 
 const scrollBehavior = (to, from, savedPosition) => {
   if (savedPosition) {
     // savedPosition is only available for popstate navigations.
     return savedPosition
   } else {
-  	debugger;
     const position = {}
     // new navigation.
     // scroll to anchor by returning the selector
@@ -39,8 +47,27 @@ const scrollBehavior = (to, from, savedPosition) => {
   }
 }
 
-export default new Router({
+
+const router =  new Router({
 	mode: 'history',
-	routes,
-	scrollBehavior
+	routes
+	// scrollBehavior
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const vm = router.app;
+    let user = vm.$store.state.user;
+    if (!user || !user.id) {
+      next({
+        path: '/login'
+      })
+    } else {
+      next();
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

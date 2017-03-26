@@ -15,19 +15,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-wode:before { content: "\e66d"; }
+.icon-wode::before { content: "\e66d"; }
 
-.icon-pinglun:before { content: "\e638"; }
+.icon-pinglun::before { content: "\e638"; }
 
-.icon-xiaoxi:before { content: "\e64c"; }
+.icon-xiaoxi::before { content: "\e64c"; }
 
-.icon-yanjing:before { content: "\e6ce"; }
+.icon-yanjing::before { content: "\e6ce"; }
 
-.icon-fabiao:before { content: "\e60a"; }
+.icon-fabiao::before { content: "\e60a"; }
 
-.icon-shouye:before { content: "\e653"; }
+.icon-shouye::before { content: "\e653"; }
 
-.icon-zhiding:before { content: "\e604"; }
+.icon-zhiding::before { content: "\e604"; }
 
-.icon-jinghua:before { content: "\e605"; }
+.icon-jinghua::before { content: "\e605"; }
 

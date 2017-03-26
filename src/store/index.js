@@ -8,6 +8,7 @@ Vue.use(Vuex);
 
 const state = {
 	curTab: '',
+	user: null,
 	topicList:[]
 }
 
@@ -20,7 +21,6 @@ const actions = {
 				item.createTime = util.formatDuration(item.create_at);
 				item.lastReplyTime = util.formatDuration(item.last_reply_at);			
 			})
-			console.log(state.curTab);
 			if(state.curTab === tab){
 				commit('ADD_TOPIC_LIST', data);
 			} else {
@@ -28,6 +28,19 @@ const actions = {
 			}
 			commit('SET_CUR_TAB', tab);
 		}
+	},
+
+	async LOGIN({ commit }, accesstoken){
+		try{
+			let res = await api.login(accesstoken),
+					data = res.data;
+			if(data.success){
+				commit('SET_USER', data);
+			}			
+		} catch (err){
+			console.error(err);
+		}
+
 	}
 }
 
@@ -41,7 +54,11 @@ const mutations = {
 	},
 
 	SET_CUR_TAB(state, tab){
-		state.curTab = tab
+		state.curTab = tab;
+	},
+
+	SET_USER(state, user){
+		state.user = user;
 	}
 }
 

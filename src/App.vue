@@ -1,55 +1,22 @@
 <template>
 	<div class="g-page">
-		<div class="m-nav">
-			<router-link to="all" class="itm" active-class="z-active">全部</router-link>
-			<router-link to="good" class="itm" active-class="z-active">精华</router-link>
-			<router-link to="share" class="itm" active-class="z-active">分享</router-link>
-			<router-link to="ask" class="itm" active-class="z-active">问答</router-link>
-			<router-link to="job" class="itm" active-class="z-active">招聘</router-link>
-		</div>
-		<transition :name="transition">
-			<router-view></router-view>
-		</transition>
+		<router-view></router-view>
 		<div class="m-nav-bottom">
-			<a href="javascript:;" class="itm z-active"><i class="iconfont icon-shouye"></i><span class="des">首页</span></a>
+			<router-link to="/homepage" class="itm" active-class="z-active">
+				<i class="iconfont icon-shouye"></i><span class="des">首页</span>
+			</router-link>
 			<a href="javascript:;" class="itm"><i class="iconfont icon-fabiao"></i><span class="des">发表</span></a>
 			<a href="javascript:;" class="itm"><i class="iconfont icon-xiaoxi"></i><span class="des">消息</span></a>
-			<a href="javascript:;" class="itm"><i class="iconfont icon-wode"></i><span class="des">我的</span></a>
+			<router-link to="/mine" class="itm" active-class="z-active">
+				<i class="iconfont icon-wode"></i><span class="des">我的</span>
+			</router-link>					
 		</div>
 	</div>
 </template>
 
 <script>
-	import topicList from '../components/topicList.vue'
 
 	export default{
-		components: {
-			'topic-list': topicList
-		},
-
-		data(){
-			return {
-				transition: 'fade',
-				routers:{
-					'all' : 1,
-					'good' : 2,
-					'share' : 3,
-					'ask' : 4,
-					'job' : 5
-				}
-			}
-		},
-
-		watch:{
-			'$route' (to, from){
-				let toPath = to.path.slice(1),
-						fromPath = from.path.slice(1);
-				this.transition = this.routers[toPath] < this.routers[fromPath]
-													? 'slider-right'
-													: 'slider-left';
-			}
-		}
-
 		
 	}
 </script>
@@ -64,6 +31,7 @@ html{
 body{
 	font-size: 10%;
 }
+
 .fade-leave-active, .fade-enter{
 	opacity: 0;
 }
@@ -224,5 +192,19 @@ body{
 			}
 		}
 	}
+}
+.u-btn{
+	display: inline-block;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 38px;
+	text-decoration: none;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+	color: white;
+}
+.u-btn.z-green{
+	background-color: #76ae01;
 }
 </style>

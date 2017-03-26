@@ -10,3 +10,8 @@ export function getTopics(page, limit, tab){
 		}
 	});
 }
+export function login(accesstoken){
+	return axios.post(urls.LOGIN,{
+		accesstoken
+	});
+}

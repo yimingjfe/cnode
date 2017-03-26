@@ -3,3 +3,5 @@ export const TOPIC_LIST = BASE_URL + '/topics';
 export const TOPIC_DETAIL = BASE_URL + '/topic/';
 export const ADD_TOPIC = BASE_URL + '/topics';
 export const EDIT_TOPIC = BASE_URL + '/topics/update';
+
+export const LOGIN = BASE_URL + '/accesstoken';
