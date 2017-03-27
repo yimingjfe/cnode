@@ -12,25 +12,6 @@ Vue.use(Router)
 
 
 const routes = [
- //  {path: '/', component: Entry, 
- //    children:[
- //      {path: '', component: homepage}
- //    ]},
-
-	// {path: '/homepage', component: homepage, 
-	// 	children: [
-	// 		{path: '', redirect:'all'},
-	// 		{path: 'all', component: createListView('all')},
-	// 		{path: 'good', component: createListView('good')},
-	// 		{path: 'share', component: createListView('share')},
-	// 		{path: 'ask', component: createListView('ask')},
-	// 		{path: 'job', component: createListView('job')}			
-	// 	]},
- //  {path: '/homepage/', redirect:'/homepage'},
-	// {path: '/mine', component: Mine, meta:{requiresAuth: true}},
- //  {path: '/login', component: Login},
- //  {path: '/topic:id', component: TopicDetail}
- 
   {path: '/', component: Entry, children:[
     {path: 'homepage', component: homepage, 
       children: [
@@ -42,7 +23,8 @@ const routes = [
         {path: 'job', component: createListView('job')}     
       ]},
     {path: 'mine', component: Mine, meta:{requiresAuth: true}},
-    {path: 'login', component: Login}    
+    {path: 'login', component: Login},
+    {path: '', redirect: 'homepage'}
   ]},
   {path: 'topic', component: TopicDetail, name: 'topic'}
 ];
