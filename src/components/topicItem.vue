@@ -1,5 +1,5 @@
 <template>
-	<li class="topic-itm" >
+	<li class="topic-itm" @click="toTopicDetail">
 		<div class="topic-info">
 			<span class="avatar"><img :src= "topic.author.avatar_url" alt="" width="32" height="32"></span>
 			<span class="info">
@@ -24,7 +24,23 @@
 </template>
 
 <script>
+	import { mapActions } from 'vuex'
+
 	export default{
-		props: ['topic']
+		props: ['topic'],
+		methods:{
+			...mapActions({
+				fetchTopicDetail: 'FETCH_TOPIC_DETAIL'
+			}),
+
+			toTopicDetail(){
+				let topic = this.topic;
+				this.fetchTopicDetail(this.topic.id).then( () => {
+					// this.$router.push({ path: '/topic', params: { id: topic.id }})
+					// this.$router.push({ path: '/topic/' + topic.id})
+					this.$router.push({ name: 'topic', params: { id: topic.id }})
+				})
+			}
+		}
 	}
 </script>

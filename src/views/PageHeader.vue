@@ -1,10 +1,13 @@
 <template>
-	<div class="m-header">{{ des }}</div>
+	<div class="m-header">
+		<div class="u-back" v-if="showBack"><</div>
+		{{ des }}
+	</div>
 </template>
 
 <script>
 	export default{
-		props: ['des']
+		props: ['des', 'show-back']
 	}
 </script>
 
@@ -17,5 +20,10 @@
 		background-color: #fff;
 		border-bottom: 1px solid #ddd;
 		color: #222;
+	}
+	.u-back{
+		position: absolute;
+		top: 0;
+		left: 20px;
 	}
 </style>

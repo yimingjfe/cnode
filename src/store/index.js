@@ -9,6 +9,7 @@ Vue.use(Vuex);
 const state = {
 	curTab: '',
 	user: null,
+	curTopic: null,
 	topicList:[]
 }
 
@@ -40,7 +41,24 @@ const actions = {
 		} catch (err){
 			console.error(err);
 		}
+	},
 
+	async FETCH_TOPIC_DETAIL({ commit }, topicId){
+		try{
+			let res = await api.fetchTopicDetail(topicId),
+					data = res.data;
+			if(data.success){
+				commit('SET_CUR_TOPIC', data.data);
+			}			
+		} catch (err){
+			console.error(err);
+		}	
+		// return api.fetchTopicDetail(topicId).then( (res) => {
+		// 	let data = res.data;
+		// 	if(data.success){
+		// 		commit('SET_CUR_TOPIC', data.data);
+		// 	}
+		// });	
 	}
 }
 
@@ -59,6 +77,10 @@ const mutations = {
 
 	SET_USER(state, user){
 		state.user = user;
+	},
+
+	SET_CUR_TOPIC(state, topic){
+		state.curTopic = topic;
 	}
 }
 

@@ -15,3 +15,6 @@ export function login(accesstoken){
 		accesstoken
 	});
 }
+export function fetchTopicDetail(id){
+	return axios.get(urls.TOPIC_DETAIL + id);
+}
