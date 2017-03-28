@@ -16,5 +16,19 @@ export function login(accesstoken){
 	});
 }
 export function fetchTopicDetail(id){
-	return axios.get(urls.TOPIC_DETAIL + id);
+	return axios.get(urls.TOPIC + '/' +id);
+}
+
+export function replyUp(replyId, accesstoken){
+	return axios.post(urls.BASE_URL + '/reply/' + replyId + '/ups',{
+		accesstoken
+	})
+}
+
+export function reply(topicId, accesstoken, content, replyId){
+	return axios.post(urls.TOPIC + '/' + topicId + '/replies',{
+		accesstoken,
+		content,
+		reply_id: replyId
+	})
 }

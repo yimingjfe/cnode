@@ -26,7 +26,7 @@ const routes = [
     {path: 'login', component: Login},
     {path: '', redirect: 'homepage'}
   ]},
-  {path: 'topic', component: TopicDetail, name: 'topic'}
+  {path: '/topic', component: TopicDetail, name: 'topic'}
 ];
 
 const scrollBehavior = (to, from, savedPosition) => {
@@ -55,7 +55,6 @@ const scrollBehavior = (to, from, savedPosition) => {
 
 
 const router =  new Router({
-	mode: 'history',
 	routes
 	// scrollBehavior
 })
@@ -66,7 +65,8 @@ router.beforeEach((to, from, next) => {
     let user = vm.$store.state.user;
     if (!user || !user.id) {
       next({
-        path: '/login'
+        path: '/login',
+        query: { redirect: to.fullPath }
       })
     } else {
       next();

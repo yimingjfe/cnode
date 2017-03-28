@@ -28,9 +28,10 @@
 			login(){
 				this.$store.dispatch('LOGIN', this.accesstoken)
 					.then( ()=> {
-						let user = this.$store.state.user;
+						let user = this.$store.state.user,
+								fullPath = this.$route.query.redirect;
 						if(user.id){
-							this.$router.push({path:'/mine'});
+							this.$router.push({path: fullPath});
 						}
 					});
 			}
@@ -47,6 +48,10 @@
 		top: 50%;
 		padding: 0 30px;
 		transform: translateY(-50%);
+		.u-btn{
+			width: 100%;
+			margin-top: 20px;
+		}		
 	}
 	.input-wrap{
 		
@@ -58,9 +63,5 @@
 		border-radius: 3px;
 		border: 1px solid #ddd;		
 		line-height: 38px;		
-	}
-	.u-btn{
-		width: 100%;
-		margin-top: 20px;
 	}
 </style>

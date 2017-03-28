@@ -43,10 +43,7 @@ export default{
 
 	computed:{
 		topicList(){
-			return this.$store.state.topicList.map(item => {
-				item.tabString = this.getTabString(item.tab);
-				return item;
-			})
+			return this.$store.state.topicList;
 		}
 	},
 
@@ -65,7 +62,7 @@ export default{
 
 		scrollHandler(){
 			let height = this.height = this.$el.scrollHeight;
-			if(this.$el.offsetHeight + this.$el.scrollTop > height - 100){
+			if(this.$el.offsetHeight + this.$el.scrollTop > height - 200){
 				this.FETCH_TOPIC_LIST({
 					page: ++this.page,
 					limit: this.limit,

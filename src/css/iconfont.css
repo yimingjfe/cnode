@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 258132 */
-  src: url('//at.alicdn.com/t/font_o3hh49umhkc5wmi.eot');
-  src: url('//at.alicdn.com/t/font_o3hh49umhkc5wmi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_o3hh49umhkc5wmi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_o3hh49umhkc5wmi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_o3hh49umhkc5wmi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_0tlqpye6xi1i3sor.eot');
+  src: url('//at.alicdn.com/t/font_0tlqpye6xi1i3sor.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_0tlqpye6xi1i3sor.woff') format('woff'),
+  url('//at.alicdn.com/t/font_0tlqpye6xi1i3sor.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_0tlqpye6xi1i3sor.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -32,4 +32,6 @@
 .icon-jinghua::before { content: "\e605"; }
 
 .icon-fanhui::before { content: "\e61b"; }
+
+.icon-dianzan::before {content: "\e83b";}
 

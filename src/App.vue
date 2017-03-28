@@ -3,8 +3,14 @@
 </template>
 
 <script>
-
-
+	export default{
+		created(){
+			let accesstoken = localStorage.getItem('accesstoken');
+			if(accesstoken){
+				this.$store.dispatch('LOGIN', accesstoken);
+			}
+		}
+	}
 </script>
 
 <style lang="scss">
@@ -93,52 +99,6 @@ body{
 		border-width: 1px 0; 
 		background-color: #fff;
 		cursor: pointer;
-		.topic-info{
-			display: table;
-			margin-top: 10px;
-			padding-left: 15px;
-			.avatar, .info{
-				display: table-cell;
-				vertical-align: middle;
-			}
-			.avatar{
-				display: inline-block;
-				width: 32px;
-				height: 32px;
-				margin-right: 5px;
-				border-radius: 50%;
-				overflow: hidden;
-				border: 1px solid #eee;
-			}
-			.info{
-				font-size: 16px;
-				line-height: 20px;
-				.nick-name,.time-info{
-					display: block;
-				}
-				.nick-name{
-					color: #080808;
-				}
-				.time-info{
-					font-size:12px;
-					.time{
-						color: #ccc;
-					}
-					.tag{
-						color: #80bd01;
-					}
-				}
-			}
-		}
-		.topic-tit{
-			padding: 5px 0;
-			margin-left: 15px;
-			font-size: 16px;
-			line-height: 24px;
-			color: #222;
-			font-weight: 800;
-			border-bottom: 1px solid $borderColorGray
-		}
 		.topic-footer{
 			display: flex;
 			flex-flow: row, nowrap;
@@ -159,26 +119,75 @@ body{
 				border-right: 1px solid $borderColorGray;
 			}
 		}
-		.topic-sign{
-			position: absolute;
-			top: 15px;
-			right:5px;
-			.sign{
-				display: inline-block;
-				transform: rotate(35deg);			
-				.iconfont{
-					font-size: 0.3rem;
-				}
+	}
+}
+
+.topic-sign{
+	position: absolute;
+	top: 15px;
+	right:5px;
+	.sign{
+		display: inline-block;
+		transform: rotate(35deg);			
+		.iconfont{
+			font-size: 0.3rem;
+		}
+	}
+	.icon-zhiding{
+		color: rgb(255,0,0);
+	}
+	.icon-jinghua{
+		color: rgb(0,128,0);
+	}
+}
+
+.topic-info{
+	display: table;
+	margin-top: 10px;
+	padding-left: 15px;
+	.avatar, .info{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.avatar{
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		margin-right: 5px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 1px solid #eee;
+	}
+	.info{
+		font-size: 16px;
+		line-height: 20px;
+		.nick-name,.time-info{
+			display: block;
+		}
+		.nick-name{
+			color: #080808;
+		}
+		.time-info{
+			font-size:12px;
+			.time{
+				color: #ccc;
 			}
-			.icon-zhiding{
-				color: rgb(255,0,0);
-			}
-			.icon-jinghua{
-				color: rgb(0,128,0);
+			.tag{
+				color: #80bd01;
 			}
 		}
 	}
 }
+.topic-tit{
+	padding: 5px 0;
+	margin-left: 15px;
+	font-size: 16px;
+	line-height: 24px;
+	color: #222;
+	font-weight: 800;
+	border-bottom: 1px solid $borderColorGray
+}
+
 .u-btn{
 	display: inline-block;
 	box-sizing: border-box;
