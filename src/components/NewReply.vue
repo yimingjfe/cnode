@@ -49,6 +49,7 @@ export default{
 		}
 		.new-reply{
 			width: 100%;
+			border: 1px solid #e1e1e1;
 			box-sizing: border-box;
 		}
 		.u-btn.reply-btn{

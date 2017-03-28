@@ -202,4 +202,19 @@ body{
 .u-btn.z-green{
 	background-color: #76ae01;
 }
+.u-btn.corner{
+	position: fixed;
+	width: 40px;
+	height: 40px;
+	right: 10px;
+	bottom: 15vh;	
+}
+.toTop{
+	border-radius: 50%;
+	background-color: #80bd01;
+	.iconfont{
+		font-size: 26px;
+		color:#fff;
+	}
+}
 </style>

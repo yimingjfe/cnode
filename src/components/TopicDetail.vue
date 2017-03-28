@@ -29,6 +29,10 @@
 					<reply v-for="(reply, index) in topic.replies" key="index" :reply="reply"></reply>
 				</ul>
 			</div>
+			<a href="javascript:;" class="u-btn corner collect"  @click="handleCollect">
+				<i class="iconfont icon-shoucang" v-if="!isCollect"></i>
+				<i class="iconfont icon-yishoucang" v-if="isCollect"></i>
+			</a>
 			<new-reply></new-reply>
 		</div>	
 	</div>	
@@ -40,6 +44,12 @@
   import NewReply from './NewReply.vue'
 
 	export default{
+		data(){
+			return {
+				isCollect: false
+			}
+		},
+
     components:{
       'page-header': PageHeader,
       'reply': Reply,
@@ -49,7 +59,33 @@
 		computed:{
 			topic(){
 				return this.$store.state.curTopic;
-			} 
+			}
+		},
+
+		methods:{
+			handleCollect(){
+				let accesstoken = this.$store.state.accesstoken,
+						topicId = this.topic.id;
+				let user = this.$store.state.user;
+				
+				if(!user || !user.id){
+					this.$router.push({path: './login', query:{redirect: '/topic'}});
+				} else {
+					if(!this.isCollect){
+						this.$store.dispatch('COLLECT',{accesstoken, topicId})
+							.then((res) => {
+								if(res) this.isCollect = !this.isCollect;
+							});
+					}else{
+						this.$store.dispatch('DE_COLLECT',{accesstoken, topicId})
+							.then((res) => {
+								if(res) this.isCollect = !this.isCollect;
+							});
+					}					
+				}
+			
+
+			} 			
 		}
 	}
 </script>
@@ -71,7 +107,14 @@ $borderColorGray: #e1e1e1;
 		padding: 0 5px;
 		overflow-x: hidden;
 		overflow-y: auto;
-		-webkit-overflow-scrolling : touch; 		
+		-webkit-overflow-scrolling : touch; 	
+
+		.collect{
+			color: #f8c63e;
+			.iconfont{
+				font-size: 40px;
+			}
+		}	
 	}
 	.topic-title{
 		position: relative;
@@ -143,4 +186,6 @@ $borderColorGray: #e1e1e1;
 			padding:0;
 		}
 	}
+
+
 </style>

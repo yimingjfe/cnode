@@ -32,3 +32,18 @@ export function reply(topicId, accesstoken, content, replyId){
 		reply_id: replyId
 	})
 }
+
+export function collect(accesstoken, topicId ){
+	return axios.post(urls.COLLECT, {
+		accesstoken,
+		topic_id: topicId
+	})
+}
+
+export function deCollect(accesstoken, topicId ){
+	return axios.post(urls.DE_COLLECT, {
+		accesstoken,
+		topic_id: topicId
+	})
+}
+

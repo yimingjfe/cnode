@@ -85,7 +85,27 @@ const actions = {
 		} catch (err){
 			console.error(err);
 		}			
-	}
+	},
+
+	async COLLECT({ commit }, {accesstoken, topicId}){
+		try{
+			let res = await api.collect(accesstoken, topicId),
+					data = res.data;
+					return data.success;
+		} catch (err){
+			console.error(err);
+		}
+	},
+
+	async DE_COLLECT({ commit }, {accesstoken, topicId}){
+		try{
+			let res = await api.deCollect(accesstoken, topicId),
+					data = res.data;
+					return data.success;
+		} catch (err){
+			console.error(err);
+		}
+	},
 
 }
 

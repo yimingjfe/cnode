@@ -18,4 +18,5 @@ export default{
 		if(hours > 0) return  hours + '小时前';
 		if(minutes > 0) return  minutes + '分前';		
 	}
+
 }
