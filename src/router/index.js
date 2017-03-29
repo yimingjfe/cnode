@@ -7,6 +7,7 @@ import Entry from '../views/Entry.vue'
 import Login from '../components/Login.vue'
 import Mine from '../components/Mine.vue'
 import TopicDetail from '../components/TopicDetail.vue'
+import MyCollectTopics from '../views/MyCollectTopics.vue'
 
 Vue.use(Router)
 
@@ -26,7 +27,8 @@ const routes = [
     {path: 'login', component: Login},
     {path: '', redirect: 'homepage'}
   ]},
-  {path: '/topic', component: TopicDetail, name: 'topic'}
+  {path: '/topic', component: TopicDetail, name: 'topic'},
+  {path: '/collect-topics', component: MyCollectTopics}
 ];
 
 const scrollBehavior = (to, from, savedPosition) => {

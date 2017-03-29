@@ -47,3 +47,7 @@ export function deCollect(accesstoken, topicId ){
 	})
 }
 
+export function fetchTopicCollects(loginName){
+	return axios.get(urls.TOPIC_COLLECT + '/' + loginName);
+}
+

@@ -59,7 +59,7 @@
 		computed:{
 			topic(){
 				return this.$store.state.curTopic;
-			}
+			},		
 		},
 
 		methods:{
@@ -97,6 +97,10 @@ $borderColorGray: #e1e1e1;
 		position: relative;
 		overflow: hidden;
 		height: 100vh;
+		.prettyprint{
+			overflow: auto;
+			background-color: #f7f7f7;
+		}
 	}
 	.topic-main{
 		position: absolute;

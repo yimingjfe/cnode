@@ -36,8 +36,6 @@
 			toTopicDetail(){
 				let topic = this.topic;
 				this.fetchTopicDetail(this.topic.id).then( () => {
-					// this.$router.push({ path: '/topic', params: { id: topic.id }})
-					// this.$router.push({ path: '/topic/' + topic.id})
 					this.$router.push({ name: 'topic', params: { id: topic.id }})
 				})
 			}

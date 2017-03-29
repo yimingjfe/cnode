@@ -41,6 +41,9 @@ body{
 	overflow: hidden;
 	height: 100vh;
 }	
+.g-main{
+	margin-top: 48px;
+}
 .m-nav{
 	display: flex;
 	position: absolute;

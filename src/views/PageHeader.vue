@@ -22,7 +22,7 @@
 		left: 0;
 		top:0 ;
 		width: 100%;		
-		line-height: 45px;
+		line-height: 47px;
 		text-align: center;
 		background-color: #fff;
 		border-bottom: 1px solid #ddd;

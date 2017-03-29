@@ -39,22 +39,15 @@
 	}
 </script>
 <style lang="scss">
-	.g-main{
-		position: absolute;
-		width: 100%;
-		box-sizing: border-box;
-	}
 	.m-login .g-main{
 		top: 50%;
 		padding: 0 30px;
+		margin-top: 0;
 		transform: translateY(-50%);
 		.u-btn{
 			width: 100%;
 			margin-top: 20px;
 		}		
-	}
-	.input-wrap{
-		
 	}
 	.input-text{	
 		width: 100%;

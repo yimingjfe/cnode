@@ -9,7 +9,6 @@
 
 <script>
 
-import 'babel-polyfill'
 import {mapState, mapGetters, mapMutations, mapActions} from 'vuex'
 import TopicItem from './topicItem.vue'
 import _ from 'lodash'
@@ -37,13 +36,6 @@ export default{
 		});
 	},
 
-	// beforeRouteEnter(to, from, next){
-	// 	this.FETCH_TOPIC_LIST({
-	// 		page: this.page,
-	// 		limit: this.limit,
-	// 		tab: this.type
-	// 	});		
-	// },
 
 	computed:{
 		topicList(){

@@ -10,7 +10,8 @@ const state = {
 	curTab: '',
 	accesstoken: '',
 	user: null,
-	curTopic: null,
+	curTopic: {},
+	myCollectTopics: [],
 	topicList:[]
 }
 
@@ -107,6 +108,24 @@ const actions = {
 		}
 	},
 
+	async FETCH_TOPIC_COLLECT({ commit }, loginName){
+		try{
+			let res = await api.fetchTopicCollects(loginName),
+					data = res.data;
+					if(data.success){
+						let topicList = data.data;
+						topicList.forEach( item => {
+							item.createTime = util.formatDuration(item.create_at);
+							item.lastReplyTime = util.formatDuration(item.last_reply_at);	
+							item.tabString = getTabString(item.tab);		
+						})						
+						commit('SET_USER_TOPIC_COLLECTS', topicList);
+					}
+		} catch (err){
+			console.error(err);
+		}
+	},
+
 }
 
 const mutations = {
@@ -132,8 +151,12 @@ const mutations = {
 	},
 
 	SET_CUR_TOPIC(state, topic){
-		state.curTopic = topic;
-	}
+		state.curTopic = {...state.curTopic, ...topic};
+	},
+
+	SET_USER_TOPIC_COLLECTS(state, collects){
+		state.myCollectTopics = collects;
+	},
 }
 
 const getters = {
