@@ -32,6 +32,7 @@ const routes = [
 ];
 
 const scrollBehavior = (to, from, savedPosition) => {
+  debugger;
   if (savedPosition) {
     // savedPosition is only available for popstate navigations.
     return savedPosition
@@ -57,8 +58,9 @@ const scrollBehavior = (to, from, savedPosition) => {
 
 
 const router =  new Router({
-	routes
-	// scrollBehavior
+  mode: 'history',
+	routes,
+	scrollBehavior
 })
 
 router.beforeEach((to, from, next) => {
