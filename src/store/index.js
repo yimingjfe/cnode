@@ -12,7 +12,8 @@ const state = {
 	user: null,
 	curTopic: {},
 	myCollectTopics: [],
-	topicList:[]
+	topicList:[],
+	positionStore: {}
 }
 
 
@@ -157,10 +158,25 @@ const mutations = {
 	SET_USER_TOPIC_COLLECTS(state, collects){
 		state.myCollectTopics = collects;
 	},
+
+	SET_POSITION(state, {selector, scrollTop}){
+		const key = genStateKey();
+		state.positionStore[key] = {
+			selector,
+			scrollTop
+		}
+	}
 }
 
 const getters = {
 	topicList: state => state.topicList
+}
+
+function genStateKey(){
+	const Time = inBrowser && window.performance && window.performance.now
+	  ? window.performance
+	  : Date;
+	return Time.now().tofixed(3);
 }
 
 function getTabString(string){

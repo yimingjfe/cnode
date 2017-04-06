@@ -28,19 +28,28 @@ export default{
 		'topic-item': TopicItem
 	},
 
+	computed:{
+		topicList(){
+			return this.$store.state.topicList;
+		}
+	},	
+
+	beforeRouteEnter(){
+		console.log('routerenter');
+		next();
+	},
+	beforeRouteUpdate(){
+		console.log('tasfasd');
+	},
 	created(){
 		this.FETCH_TOPIC_LIST({
 			page: this.page,
 			limit: this.limit,
 			tab: this.type
 		});
-	},
-
-
-	computed:{
-		topicList(){
-			return this.$store.state.topicList;
-		}
+		window.addEventListener('popState', e => {
+			console.log(this.$store.state.positionStore[e.state]);
+		});		
 	},
 
 	mounted(){
@@ -50,6 +59,25 @@ export default{
 	updated(){
 		this.$el.scrollBottom = this.$el.ScrollHeight - this.height;
 	},
+
+	watch:{
+		$route(){
+			console.log('fdf');
+		}
+	},
+
+	beforeRouteLeave (to, from, next) {
+		// debugger;
+  //   this.$store.commit('SET_POSITION', {
+  //   	selector: 'topic-list',
+  //   	scrollTop: this.$el.scrollTop
+  //   });
+  	next(false);
+  },
+
+	beforeDestory(){
+		window.removeEventListener('popState');
+	},  
 
 	methods:{
 		...mapActions([

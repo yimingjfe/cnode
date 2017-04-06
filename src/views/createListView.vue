@@ -5,6 +5,7 @@
 		return {
 			name: `${type}-topic-list`,
 			render(h){
+				console.log(TopicList);
 				return h(TopicList, { props: { type }})
 			} 
 		}
