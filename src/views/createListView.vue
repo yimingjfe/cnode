@@ -1,5 +1,5 @@
 <script>
-	import TopicList from '../components/topicList.vue'
+	import TopicList from '../components/TopicList.vue'
 
 	export function createListView(type){
 		return {

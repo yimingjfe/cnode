@@ -1,6 +1,6 @@
 <template>
 	<div class="g-homepage">
-		<div class="m-nav">
+		<div class="m-nav m-nav-top">
 			<router-link to="/homepage/all" class="itm" active-class="z-active">全部</router-link>
 			<router-link to="/homepage/good" class="itm" active-class="z-active">精华</router-link>
 			<router-link to="/homepage/share" class="itm" active-class="z-active">分享</router-link>

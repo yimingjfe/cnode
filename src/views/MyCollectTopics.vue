@@ -14,7 +14,7 @@
 
 <script>
 import TopicItem from '../components/topicItem.vue'
-import PageHeader from './PageHeader.vue'
+import PageHeader from '../components/PageHeader.vue'
 import _ from 'lodash'
 
 export default{

@@ -39,9 +39,9 @@
 </template>
 
 <script>
-  import PageHeader from '../views/PageHeader.vue'
-  import Reply from './Reply.vue'
-  import NewReply from './NewReply.vue'
+  import PageHeader from '../components/PageHeader.vue'
+  import Reply from '../components/Reply.vue'
+  import NewReply from '../components/NewReply.vue'
 
 	export default{
 		data(){

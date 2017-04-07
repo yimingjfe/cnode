@@ -27,7 +27,7 @@ body{
 .fade-leave-active, .fade-enter{
 	opacity: 0;
 }
-.slider-left-enter, .slider-right-leave-active{
+.slider-right-leave-active,.slider-left-enter{
 	opacity: 0;
 	transform: translateX(50%);	
 }
@@ -38,15 +38,17 @@ body{
 
 .g-page{
 	position: relative;
-	overflow: hidden;
+	padding-top: 48px;
 	height: 100vh;
 }	
-.g-main{
-	margin-top: 48px;
+.g-homepage{
+
 }
+
 .m-nav{
 	display: flex;
-	position: absolute;
+	position: fixed;
+	z-index: 10;
 	width: 100%;
 	flex-flow: row nowrap;
 	color:#333;
@@ -64,9 +66,11 @@ body{
 		border-bottom: 3px solid #80bd01;
 	}
 }
+.m-nav-top{
+	top: 0;
+}
 .m-nav-bottom{
 	@extend .m-nav;
-	position: absolute;
 	left: 0;
 	bottom: 0;
 	padding: 5px 0;
@@ -88,13 +92,11 @@ body{
 
 .topic-list{
 	position: absolute;
-	margin: 48px 0 0 0;
-	height: calc(100% - 96px);
+	margin: 0;
 	padding-left: 0;
-	overflow-y: auto;
 	background-color: #eee;
 	list-style:none;
-	transition: all .3s ease;
+	transition: all .4s ease;
 	.topic-itm{
 		position: relative;
 		margin-bottom:15px;

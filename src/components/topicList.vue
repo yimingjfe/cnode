@@ -34,13 +34,6 @@ export default{
 		}
 	},	
 
-	beforeRouteEnter(){
-		console.log('routerenter');
-		next();
-	},
-	beforeRouteUpdate(){
-		console.log('tasfasd');
-	},
 	created(){
 		this.FETCH_TOPIC_LIST({
 			page: this.page,
@@ -66,14 +59,6 @@ export default{
 		}
 	},
 
-	beforeRouteLeave (to, from, next) {
-		// debugger;
-  //   this.$store.commit('SET_POSITION', {
-  //   	selector: 'topic-list',
-  //   	scrollTop: this.$el.scrollTop
-  //   });
-  	next(false);
-  },
 
 	beforeDestory(){
 		window.removeEventListener('popState');

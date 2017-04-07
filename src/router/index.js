@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import {createListView} from '../views/createListView.vue'
 import App from '../App.vue' 
-import homepage from '../views/homepage.vue' 
+import HomePage from '../views/homepage.vue' 
 import Entry from '../views/Entry.vue' 
 import Login from '../components/Login.vue'
-import Mine from '../components/Mine.vue'
-import TopicDetail from '../components/TopicDetail.vue'
+import Mine from '../views/Mine.vue'
+import TopicDetail from '../views/TopicDetail.vue'
 import MyCollectTopics from '../views/MyCollectTopics.vue'
 
 Vue.use(Router)
@@ -14,7 +14,7 @@ Vue.use(Router)
 
 const routes = [
   {path: '/', component: Entry, children:[
-    {path: 'homepage', component: homepage, 
+    {path: 'homepage', component: HomePage, 
       children: [
         {path: '', redirect:'all'},
         {path: 'all', component: createListView('all')},
