@@ -1,6 +1,6 @@
 <template>
 	<ul class="topic-list">
-		<topic-item v-for="(topic, index) in topicList" key="index" :topic="topic"></topic-item>
+		<topic-item v-for="(topic, index) in topicList" :key="index" :topic="topic"></topic-item>
 		<a href="javascript:;" class="u-btn corner toTop" v-if="showToTop" @click="toTop">
 			<i class="iconfont icon-top"></i>
 		</a>
