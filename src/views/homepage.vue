@@ -24,7 +24,30 @@
 					'share' : 3,
 					'ask' : 4,
 					'job' : 5
+				},
+				touchStartEvent: null,
+				touchEndEvent: null
+			}
+		},
+
+
+		mounted(){
+
+			this.$el.addEventListener('touchstart', e => {
+				this.touchStartEvent = e;
+			});
+			this.$el.addEventListener('touchend', e => {
+				this.touchEndEvent = e;
+			});			
+		},
+
+		computed:{
+			routersArray(){
+				let array = [];
+				for(let key of Object.keys(this.routers)){
+					array.push(key)
 				}
+				return array;
 			}
 		},
 
@@ -35,6 +58,26 @@
 				this.transition = this.routers[toPath] < this.routers[fromPath]
 													? 'slider-right'
 													: 'slider-left';
+			},
+
+			touchEndEvent(to, from){
+				const touchStartEvent = this.touchStartEvent,
+							touchEndEvent = this.touchEndEvent;
+
+				if(touchStartEvent.changedTouches[0].clientX 
+						- touchEndEvent.changedTouches[0].clientX > 50){
+
+					const to = this.$route.path.slice(10);
+					const toPath = this.routersArray[this.routers[to]];
+					if(toPath) this.$router.push('/homepage/' + toPath);
+					
+				} else if(touchStartEvent.changedTouches[0].clientX 
+						- touchEndEvent.changedTouches[0].clientX < -50){
+
+					const to = this.$route.path.slice(10);
+					const toPath = this.routersArray[this.routers[to] - 2];
+					if(toPath) this.$router.push('/homepage/' + toPath);
+				}
 			}
 		}		
 	} 
