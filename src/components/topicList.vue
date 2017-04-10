@@ -20,7 +20,8 @@ export default{
 			page: 1,
 			limit: 10,
 			height: 0,
-			showToTop: false
+			showToTop: false,
+			debouncedScroll: _.debounce(this.scrollHandler, 200)
 		}
 	},
 
@@ -35,34 +36,30 @@ export default{
 	},	
 
 	created(){
-		this.FETCH_TOPIC_LIST({
+		!this.topicList.length && this.FETCH_TOPIC_LIST({
 			page: this.page,
 			limit: this.limit,
 			tab: this.type
-		});
-		window.addEventListener('popState', e => {
-			console.log(this.$store.state.positionStore[e.state]);
-		});		
+		});	
 	},
 
 	mounted(){
-		this.$el.addEventListener('scroll', _.debounce(this.scrollHandler, 200))
+		window.addEventListener('scroll', this.debouncedScroll)
 	},
 
 	updated(){
-		this.$el.scrollBottom = this.$el.ScrollHeight - this.height;
+		document.body.scrollBottom = document.body.ScrollHeight - this.height;
+	},
+
+	destroyed(){
+		window.removeEventListener('scroll', this.debouncedScroll);
 	},
 
 	watch:{
 		$route(){
-			console.log('fdf');
 		}
 	},
 
-
-	beforeDestory(){
-		window.removeEventListener('popState');
-	},  
 
 	methods:{
 		...mapActions([
@@ -70,9 +67,9 @@ export default{
 			]),
 
 		scrollHandler(){
-			let height = this.height = this.$el.scrollHeight,
-					offsetHeight = this.$el.offsetHeight,
-					scrollTop = this.$el.scrollTop;
+			let height = this.height = document.body.scrollHeight,
+					offsetHeight = document.body.offsetHeight,
+					scrollTop = document.body.scrollTop;
 			if(offsetHeight + scrollTop > height - 200){
 				this.FETCH_TOPIC_LIST({
 					page: ++this.page,
@@ -84,9 +81,9 @@ export default{
 		},
 
 		toTop(){
-			let scrollTop = this.$el.scrollTop;
+			let scrollTop = document.body.scrollTop;
 			if(scrollTop > 0){
-				this.$el.scrollTop = scrollTop - 50;
+				document.body.scrollTop = scrollTop - 50;
 				requestAnimationFrame(this.toTop);
 			}		
 		}

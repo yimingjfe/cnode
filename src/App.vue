@@ -93,6 +93,7 @@ body{
 .topic-list{
 	position: absolute;
 	margin: 0;
+	width: 100%;
 	padding-left: 0;
 	background-color: #eee;
 	list-style:none;
