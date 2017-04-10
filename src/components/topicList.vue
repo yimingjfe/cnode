@@ -32,15 +32,20 @@ export default{
 	computed:{
 		topicList(){
 			return this.$store.state.topicList;
+		},
+		tab(){
+			return this.$store.state.curTab;
 		}
 	},	
 
 	created(){
-		!this.topicList.length && this.FETCH_TOPIC_LIST({
-			page: this.page,
-			limit: this.limit,
-			tab: this.type
-		});	
+		if(this.type !== this.tab){
+			this.FETCH_TOPIC_LIST({
+				page: this.page,
+				limit: this.limit,
+				tab: this.type
+			});	
+		}
 	},
 
 	mounted(){
